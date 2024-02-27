@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  app:
+    build: 
+      target: 'copy'
+      context: ./Plantuino.Web
+      dockerfile: Dockerfile
+    command: npm run ng -- serve --host 0.0.0.0 --disable-host-check --poll 100 --watch
+    ports:
+      - 4200:4200
+    working_dir: /app
+    volumes:
+      - ./Plantuino.Web:/app
+      - /app/node_modules
